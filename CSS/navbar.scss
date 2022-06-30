@@ -1,0 +1,114 @@
+/* ====== Navbar Position Presets ======*/
+/* ====== Navbar Links ======*/
+/* === Avatar input === */
+.menu-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+nav {
+  background-color: #7040E3;
+  padding: 1%;
+}
+
+.menu-itens {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+a {
+  color: white;
+  font-size: 20px;
+}
+
+.nav-image-logo {
+  border-radius: 50%;
+  height: 15vh;
+  width: 8vw;
+}
+
+.search-input-content {
+  width: 12vw;
+  height: 3vh;
+  border-radius: 12px;
+  border-style: none;
+}
+
+.material-symbols-outlined {
+  position: absolute;
+  padding: 2px;
+}
+
+.avatar-navbar-item {
+  position: block;
+}
+
+.personal-image {
+  text-align: center;
+}
+
+.personal-image input[type="file"] {
+  display: none;
+}
+
+.personal-figure {
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+
+.personal-avatar {
+  cursor: pointer;
+  width: 120px;
+  height: 120px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 100%;
+  border: 2px solid transparent;
+  -webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
+  -webkit-transition: all ease-in-out .3s;
+  transition: all ease-in-out .3s;
+}
+
+.personal-avatar:hover {
+  -webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
+}
+
+.personal-figcaption {
+  cursor: pointer;
+  position: absolute;
+  top: 0px;
+  width: inherit;
+  height: inherit;
+  border-radius: 100%;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0);
+  -webkit-transition: all ease-in-out .3s;
+  transition: all ease-in-out .3s;
+}
+
+.personal-figcaption:hover {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.personal-figcaption > img {
+  margin-top: 32.5px;
+  width: 50px;
+  height: 50px;
+}
+/*# sourceMappingURL=navbar.css.map */
