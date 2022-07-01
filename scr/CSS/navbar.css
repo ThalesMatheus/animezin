@@ -19,7 +19,7 @@
   align-items: center;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 nav {
@@ -51,15 +51,22 @@ a:hover {
 }
 
 .search-input-content {
-  width: 12vw;
-  height: 3vh;
-  border-radius: 12px;
+  width: 16vw;
+  height: 4vh;
   border-style: none;
 }
 
 .material-symbols-outlined {
   position: absolute;
   padding: 2px;
+}
+
+.material-symbols-outlined {
+  background-color: white;
+  color: var(--Primary-color);
+  border-style: none;
+  height: 4vh;
+  cursor: pointer;
 }
 
 /* ==== AVATAR PROFILE ==== */
