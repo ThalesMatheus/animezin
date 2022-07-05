@@ -1,11 +1,13 @@
 /* ====== Navbar Position Presets ======*/
 /* ====== Navbar Links ======*/
 /* === Avatar input === */
-:root {
-  --Primary-color: #AA61C2;
-  --Secondary-color: #663A75;
 
+:root{
+  --Primary-color: #7040E3;
+  --Secondary-color: #3a296286;
 }
+
+
 
 .menu-content {
   display: -webkit-box;
@@ -13,18 +15,18 @@
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-around;
+      -ms-flex-pack: justify;
+      justify-content: space-around
 }
 
 nav {
-  background-color: var(--Primary-color);
+  background-color: #7040E3;
   padding: 1%;
 }
 
@@ -39,9 +41,8 @@ a {
   font-size: 20px;
 }
 
-a:hover {
+a:hover{
   color: var(--Secondary-color);
-  -webkit-transition: 1s;
   transition: 1s;
 }
 
@@ -62,7 +63,7 @@ a:hover {
   padding: 2px;
 }
 
-.material-symbols-outlined {
+.material-symbols-outlined{
   background-color: white;
   color: var(--Primary-color);
   border-style: none;
@@ -70,7 +71,9 @@ a:hover {
   cursor: pointer;
 }
 
+
 /* ==== AVATAR PROFILE ==== */
+
 .avatar-navbar-item {
   position: block;
 }
@@ -94,18 +97,18 @@ a:hover {
   width: 120px;
   height: 120px;
   -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+          box-sizing: border-box;
   border-radius: 100%;
   border: 1px solid transparent;
   -webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
-  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
   -webkit-transition: all ease-in-out .3s;
   transition: all ease-in-out .3s;
 }
 
 .personal-avatar:hover {
   -webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
-  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
 }
 
 .personal-figcaption {
@@ -132,29 +135,4 @@ a:hover {
   height: 50px;
 }
 
-/* ==== FILTER ==== */
 
-.filter ul{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--Secondary-color);
-}
-
-
-.filter ul li{
-  display: inline-block;
-  padding: 1em 1em 1em 1em;
-  color: white;
-  line-height: 30px;
-}
-
-.filter li{
-  border-right: dashed 1px solid;
-}
-
-.filter li:hover {
-  color: var(--Primary-color);
-  transition: 0.8s;
-  cursor: pointer;
-}
