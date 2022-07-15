@@ -17,7 +17,9 @@ async function getDados() {
     let response = await fetch('http://localhost:3000/api/ani/')
     if (response.ok) {
         let json = await response.json();
-        console.log(json);
+        for (let i = 0; i < 15; i++) {
+            console.log(json[i]['anime']);
+        }
     } else {
     alert("HTTP-Error: " + response.status);
     }
