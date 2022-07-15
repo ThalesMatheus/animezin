@@ -15,7 +15,14 @@ const getAnime = {
   }),
 };
 
+const getEpisodes = {
+  params: Joi.object().keys({
+    aniId: Joi.string(),
+  }),
+};
+
 module.exports = {
   getAnimes,
   getAnime,
+  getEpisodes,
 };

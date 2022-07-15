@@ -13,4 +13,8 @@ router
   .route('/:aniId')
   .get(validate(aniValidation.getAnime), aniController.getAnime);
 
+router
+  .route('/:aniId/episode')
+  .get(validate(aniValidation.getEpisodes), aniController.getEpisodes);
+
 module.exports = router;
