@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path')
 const router = require('./routes/index')
+const cors = require('cors');
 const app = express();
 
 const defaultRes = (req, res) => {
@@ -13,6 +14,7 @@ const defaultRes = (req, res) => {
     )
 }
 
+app.use(cors());
 
 app.use(express.json());
 
