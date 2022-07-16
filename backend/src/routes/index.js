@@ -3,10 +3,24 @@ const express = require('express')
 const router = express.Router();
 const aniRoute = require('./ani.ctt')
 
+const home = (req, res) => {
+  res.send(
+      `<h1>Home</h1>
+      <br>
+      <ul>
+          <li><a href='http://localhost:3000/api/ani'>Ver todos os animes</a></li>
+      </ul>`
+  )
+}
+
 const defaultRoutes = [
   {
     path: '/ani',
     route: aniRoute,
+  },
+  {
+    path: '/home',
+    route: home
   }
 ];
 

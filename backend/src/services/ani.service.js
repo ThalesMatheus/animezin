@@ -60,12 +60,9 @@ async function getInfo(animeQuery){
     } catch(e) {
         throw e.responseCode
     }
-    console.log(animeQuery);
-    const infoMatches = INFO_DIV_PATTERN.exec(res.data)
-    console.log(infoMatches);
 
-    const episodeMatches = [...res.data.matchAll(EP_PATTERN)]
-
+    // const infoMatches = INFO_DIV_PATTERN.exec(res.data)
+    // console.log(infoMatches);
     // const infoBanner = [...infoMatches.matchAll(INFO_BANNER_PATTERN)]
     // const typeMatch = [...infoMatches.matchAll(INFO_TYPE_PATTERN)]
     // const descriptionMatch = [...infoMatches.matchAll(DESCRIPTION_PATTERN)]
@@ -73,6 +70,8 @@ async function getInfo(animeQuery){
     // const releaseMatch = [...infoMatches.matchAll(INFO_RELEASED_PATTERN)]
     // const statusMatch = [...infoMatches.matchAll(INFO_STATUS_PATTERN)]
     // const othernameMatch = [...infoMatches.matchAll(INFO_OTHERNAME_PATTERN)]
+
+    const episodeMatches = [...res.data.matchAll(EP_PATTERN)]
     const infoBanner = [...res.data.matchAll(INFO_BANNER_PATTERN)]
     const typeMatch = [...res.data.matchAll(INFO_TYPE_PATTERN)]
     const descriptionMatch = [...res.data.matchAll(DESCRIPTION_PATTERN)]
@@ -80,7 +79,10 @@ async function getInfo(animeQuery){
     const releaseMatch = [...res.data.matchAll(INFO_RELEASED_PATTERN)]
     const statusMatch = [...res.data.matchAll(INFO_STATUS_PATTERN)]
     const othernameMatch = [...res.data.matchAll(INFO_OTHERNAME_PATTERN)]
+    
     anime = {
+        'animeId': animeQuery,
+        'animeTitle': infoBanner.at(-1)[2] ? infoBanner.at(-1)[2] : 'null',
         'animeBanner': infoBanner.at(-1)[1] ? infoBanner.at(-1)[1] : 'null',
         'maxEpisodes': episodeMatches.at(-1)[1] ? episodeMatches.at(-1)[1] : 'null',
         'animeType': {

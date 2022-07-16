@@ -21,11 +21,11 @@ const getAnime = catchAsync(async (req, res) => {
 });
 
 const getInfo = catchAsync(async (req, res) => {
-  const episodes = await aniService.getInfo(req.params.aniId);
-  if (episodes.length == 0) {
+  const info = await aniService.getInfo(req.params.aniId);
+  if (!info) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Anime not found');
   }
-  res.send(episodes);
+  res.send(info);
 });
 
 module.exports = {
