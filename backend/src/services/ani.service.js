@@ -39,7 +39,7 @@ async function getBaseAnimes(query){
     } catch (e) {
         throw e.responseCode
     }
-    console.log(res.data.params);
+    console.log(res.data.params); // -> null ?????
     let anime = []
     const descriptionMatch = [...res.data.matchAll(LIST_DESCRIPTION_PATTERN)]
     const titleMatch = [...res.data.matchAll(LIST_TITLE_PATTERN)]
