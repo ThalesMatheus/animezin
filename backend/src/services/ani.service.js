@@ -25,52 +25,54 @@ const {
 async function getBaseAnimes(query){
     let res
     try {
-        if (query && query.page){
-            res = await axios.get(`https://gogoanime.lu/anime-list.html?page=${query.page}`)
-        }else if (query && query.letter){
-            res = await axios.get(`https://gogoanime.lu/anime-list-${query.letter}`)
+        if (query.keys){
+            if (query.page && query.letter){
+                res = await axios.get(`https://gogoanime.lu/anime-list-${query.letter}?page=${query.page}`)
+            }else if (query.page){
+                res = await axios.get(`https://gogoanime.lu/anime-list.html?page=${query.page}`)
+            }else if (query.letter){
+                res = await axios.get(`https://gogoanime.lu/anime-list-${query.letter}`)
+            }
         }else {
-            res = await axios.get(`https://gogoanime.lu`)
+            res = await axios.get(`https://gogoanime.lu/anime-list.html`)
         }
     } catch (e) {
         throw e.responseCode
     }
+    console.log(res.data.params);
     let anime = []
-    if ((query && query.page) || (query && query.letter)){
-        const descriptionMatch = [...res.data.matchAll(LIST_DESCRIPTION_PATTERN)]
-        const titleMatch = [...res.data.matchAll(LIST_TITLE_PATTERN)]
-        const listMatches = [...res.data.matchAll(LIST_PATTERN)]
-        for (let i = 0; i < listMatches.length; i++) {
-            const list = listMatches[i]
-            const bannerMatch = [...list[0].matchAll(LIST_BANNER_PATTERN)]
-            const genreMatch = [...list[0].matchAll(INFO_GENRE_PATTERN)]
-            const releaseMatch = [...list[0].matchAll(INFO_RELEASED_PATTERN)]
-            const statusMatch = [...list[0].matchAll(LIST_STATUS_PATTERN)]
-            anime.push({
-                'animeId': titleMatch[i] ? (titleMatch[i][1] ? titleMatch[i][1] : 'Anime not found') : 'Id not found',
-                'animeTitle': titleMatch[i] ? (titleMatch[i][2] ? titleMatch[i][2] : 'Anime not found') : 'Id not found',
-                'animeBanner': bannerMatch.at(-1) ? (bannerMatch.at(-1)[2] ? bannerMatch.at(-1)[2] : 'Banner not found') : 'Id not found',
-                'genres': genreMatch.map((val) => {
-                    return {
-                        'genreId': val[1] ? val[1] : 'null',
-                        'genreTitle': val[2] ? val[2] : 'null'
-                    }
-                }),
-                'release': releaseMatch.at(-1)[1] ? releaseMatch.at(-1)[1] : 'null',
-                'description': descriptionMatch.at(i)[1] ? descriptionMatch.at(i)[1] : 'null',
-                'status': statusMatch.at(-1)[1] ? statusMatch.at(-1)[1] : 'null',
-            })
-        }
-    }else {
-        const bannerMatches = [...res.data.matchAll(EPISODE_BANNER)]
-        for (let i = 0; i < bannerMatches.length; i++) {
-            anime.push({
-                'animeId': bannerMatches[i] ? (bannerMatches[i][1] ? bannerMatches[i][1].split("-episode")[0] : 'Anime not found') : 'Id not found',
-                'animeTitle': bannerMatches[i] ? (bannerMatches[i][2] ? bannerMatches[i][2] : 'Anime not found') : 'Id not found',
-                'animeBanner': bannerMatches[i] ? (bannerMatches[i][3] ? bannerMatches[i][3] : 'Banner not found') : 'Id not found'
-            })
-        }
+    const descriptionMatch = [...res.data.matchAll(LIST_DESCRIPTION_PATTERN)]
+    const titleMatch = [...res.data.matchAll(LIST_TITLE_PATTERN)]
+    const listMatches = [...res.data.matchAll(LIST_PATTERN)]
+    for (let i = 0; i < listMatches.length; i++) {
+        const list = listMatches[i]
+        const bannerMatch = [...list[0].matchAll(LIST_BANNER_PATTERN)]
+        const genreMatch = [...list[0].matchAll(INFO_GENRE_PATTERN)]
+        const releaseMatch = [...list[0].matchAll(INFO_RELEASED_PATTERN)]
+        const statusMatch = [...list[0].matchAll(LIST_STATUS_PATTERN)]
+        anime.push({
+            'animeId': titleMatch[i] ? (titleMatch[i][1] ? titleMatch[i][1] : 'Anime not found') : 'Id not found',
+            'animeTitle': titleMatch[i] ? (titleMatch[i][2] ? titleMatch[i][2] : 'Anime not found') : 'Id not found',
+            'animeBanner': bannerMatch.at(-1) ? (bannerMatch.at(-1)[2] ? bannerMatch.at(-1)[2] : 'Banner not found') : 'Id not found',
+            'genres': genreMatch.map((val) => {
+                return {
+                    'genreId': val[1] ? val[1] : 'null',
+                    'genreTitle': val[2] ? val[2] : 'null'
+                }
+            }),
+            'release': releaseMatch.at(-1)[1] ? releaseMatch.at(-1)[1] : 'null',
+            'description': descriptionMatch.at(i)[1] ? descriptionMatch.at(i)[1] : 'null',
+            'status': statusMatch.at(-1)[1] ? statusMatch.at(-1)[1] : 'null',
+        })
     }
+    // const bannerMatches = [...res.data.matchAll(EPISODE_BANNER)]
+    // for (let i = 0; i < bannerMatches.length; i++) {
+    //     anime.push({
+    //         'animeId': bannerMatches[i] ? (bannerMatches[i][1] ? bannerMatches[i][1].split("-episode")[0] : 'Anime not found') : 'Id not found',
+    //         'animeTitle': bannerMatches[i] ? (bannerMatches[i][2] ? bannerMatches[i][2] : 'Anime not found') : 'Id not found',
+    //         'animeBanner': bannerMatches[i] ? (bannerMatches[i][3] ? bannerMatches[i][3] : 'Banner not found') : 'Id not found'
+    //     })
+    // }
     return anime
 }
 
