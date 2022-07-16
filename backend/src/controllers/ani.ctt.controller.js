@@ -20,8 +20,8 @@ const getAnime = catchAsync(async (req, res) => {
   res.send(anime);
 });
 
-const getEpisodes = catchAsync(async (req, res) => {
-  const episodes = await aniService.getEpisodes(req.params.aniId);
+const getInfo = catchAsync(async (req, res) => {
+  const episodes = await aniService.getInfo(req.params.aniId);
   if (episodes.length == 0) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Anime not found');
   }
@@ -31,5 +31,5 @@ const getEpisodes = catchAsync(async (req, res) => {
 module.exports = {
   getAnimes,
   getAnime,
-  getEpisodes
+  getInfo
 };

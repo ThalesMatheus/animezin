@@ -15,7 +15,7 @@ const getAnime = {
   }),
 };
 
-const getEpisodes = {
+const getInfo = {
   params: Joi.object().keys({
     aniId: Joi.string(),
   }),
@@ -24,5 +24,5 @@ const getEpisodes = {
 module.exports = {
   getAnimes,
   getAnime,
-  getEpisodes,
+  getInfo,
 };
