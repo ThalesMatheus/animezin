@@ -25,7 +25,7 @@ const {
 async function getBaseAnimes(query){
     let res
     try {
-        if (query.keys){
+        if (Object.keys(query)){
             if (query.page && query.letter){
                 res = await axios.get(`https://gogoanime.lu/anime-list-${query.letter}?page=${query.page}`)
             }else if (query.page){
@@ -39,7 +39,7 @@ async function getBaseAnimes(query){
     } catch (e) {
         throw e.responseCode
     }
-    console.log(res.data.params);
+    console.log(Object.keys(query));
     let anime = []
     const descriptionMatch = [...res.data.matchAll(LIST_DESCRIPTION_PATTERN)]
     const titleMatch = [...res.data.matchAll(LIST_TITLE_PATTERN)]
