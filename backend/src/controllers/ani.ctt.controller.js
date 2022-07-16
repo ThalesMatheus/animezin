@@ -5,7 +5,8 @@ const catchAsync = require('../utils/catchAsync');
 const aniService = require('../services/ani.service')
 
 const getAnimes = catchAsync(async (req, res) => {
-  const anime = await aniService.getBaseAnimes();
+  console.log(req.query.page);
+  const anime = await aniService.getBaseAnimes(req.query.page);
   if (anime.length == 0) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Animes not found');
   }

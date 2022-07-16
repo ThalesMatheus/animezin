@@ -6,10 +6,15 @@ const EPISODE_BANNER = /<a href=["']\/(.+)["'] title=["'](.+)["']>(?:\r\n.+|\r.+
 const INFO_DIV_PATTERN = /<div class=["']anime_info_body_bg["']>(.|\n)*?<\/div>/ig
 const INFO_BANNER_PATTERN = /<img src=["'](.+)["'].*>(?:\r\n.+|\r.+|\n.+)<h1>(.+)<\/h1>/ig
 const INFO_TYPE_PATTERN = /<span>Type: <\/span>(?:\r\n.+|\r.+|\n.+)<a href=["']\/sub-category\/(.+)["'] title=["'](.+)["']/ig
-const INFO_GENRE_PATTERN = /<a href=["']https:\/\/gogoanime.lu\/genre\/([a-zA-Z0-9-]+)["'] title=["']([a-zA-Z0-9\s]+)["']/ig
-const INFO_RELEASED_PATTERN = /<span>Released: <\/span>(.+)<\/p>/ig
+const INFO_GENRE_PATTERN = /<a href=["']https:\/\/gogoanime.lu\/genre\/([a-zA-Z0-9-]+)["'] title=["']([a-zA-Z0-9\s-]+)["']/ig
+const INFO_RELEASED_PATTERN = /<span>Released: <\/span>(.+?)<\/p>/ig
 const INFO_STATUS_PATTERN = /<span>Status: <\/span>(?:\r\n.+|\r.+|\n.+)<a href=["']\/(?:.+)["'] title=["'](?:.+)["']>(.+)<\/a>/ig
 const INFO_OTHERNAME_PATTERN = /<span>Other name: <\/span>(.+)<\/p>/ig
+const LIST_PATTERN = /<li title=["']<div class="thumnail_tool["']>((?:(?!<li).|(?!<li)\n)*)/ig
+const LIST_BANNER_PATTERN = /<img src=["'](.+?)["'].+?>/ig
+const LIST_STATUS_PATTERN = /<p class=["']type["']><span>Status: <\/span>(.+?)<\/p>/ig
+const LIST_DESCRIPTION_PATTERN = /<p class=["']sumer["']><span>Plot Summary: <\/span>(.+?)<\/p>/igs
+const LIST_TITLE_PATTERN = /<a href=["']\/category\/(.+)["'] title=["'].*["']>(.*)<\/a>/ig
 const DESCRIPTION_PATTERN = /<span>Plot Summary: <\/span>(.+)[<\/p>]*/g
 const REFERER_PATTERN = /<a href=["']#["'] rel=["'](?:1|100)["'] data-video=["'](.+)["'] >/ig
 
@@ -29,5 +34,10 @@ module.exports = {
     INFO_RELEASED_PATTERN,
     INFO_STATUS_PATTERN,
     INFO_OTHERNAME_PATTERN,
-    INFO_DIV_PATTERN
+    INFO_DIV_PATTERN,
+    LIST_PATTERN,
+    LIST_BANNER_PATTERN,
+    LIST_STATUS_PATTERN,
+    LIST_DESCRIPTION_PATTERN,
+    LIST_TITLE_PATTERN
 }
