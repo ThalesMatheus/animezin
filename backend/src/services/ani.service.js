@@ -61,7 +61,8 @@ async function getInfo(animeQuery){
         throw e.responseCode
     }
     console.log(animeQuery);
-    //const infoMatches = [...res.data.matchAll(INFO_DIV_PATTERN)].at(-1)[0]
+    const infoMatches = INFO_DIV_PATTERN.exec(res.data)
+    console.log(infoMatches);
 
     const episodeMatches = [...res.data.matchAll(EP_PATTERN)]
 
