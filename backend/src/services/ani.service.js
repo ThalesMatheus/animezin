@@ -22,11 +22,13 @@ const {
     VIDEO_PATTERN
 } = require('../config/config')
 
-async function getBaseAnimes(page){
+async function getBaseAnimes(query){
     let res
     try {
-        if (page){
-            res = await axios.get(`https://gogoanime.lu/anime-list.html?page=${page}`)
+        if (query && query.page){
+            res = await axios.get(`https://gogoanime.lu/anime-list.html?page=${query.page}`)
+        }else if (query && query.letter){
+            res = await axios.get(`https://gogoanime.lu/anime-list-${query.letter}`)
         }else {
             res = await axios.get(`https://gogoanime.lu`)
         }
@@ -34,7 +36,7 @@ async function getBaseAnimes(page){
         throw e.responseCode
     }
     let anime = []
-    if (page){
+    if ((query && query.page) || (query && query.letter)){
         const descriptionMatch = [...res.data.matchAll(LIST_DESCRIPTION_PATTERN)]
         const titleMatch = [...res.data.matchAll(LIST_TITLE_PATTERN)]
         const listMatches = [...res.data.matchAll(LIST_PATTERN)]

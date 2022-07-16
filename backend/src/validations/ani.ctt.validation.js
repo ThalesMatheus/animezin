@@ -2,16 +2,14 @@ const Joi = require('joi');
 
 const getAnimes = {
   query: Joi.object().keys({
-    name: Joi.string(),
-    sortBy: Joi.string(),
-    limit: Joi.number().integer(),
     page: Joi.number().integer(),
+    letter: Joi.string().length(1).pattern(/[A-Z0]/)
   }),
 };
 
 const getAnime = {
   params: Joi.object().keys({
-    aniId: Joi.string(),
+    aniId: Joi.string()
   }),
 };
 
