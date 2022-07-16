@@ -11,7 +11,8 @@ const {
     INFO_GENRE_PATTERN,
     INFO_RELEASED_PATTERN,
     INFO_STATUS_PATTERN,
-    INFO_OTHERNAME_PATTERN
+    INFO_OTHERNAME_PATTERN,
+    INFO_DIV_PATTERN
 } = require('../config/config')
 
 async function getBaseAnimes(){
@@ -59,14 +60,17 @@ async function getInfo(animeQuery){
     } catch(e) {
         throw e.responseCode
     }
+    const infoMatches = [...res.data.matchAll(INFO_DIV_PATTERN)].at(-1)[0]
+
     const episodeMatches = [...res.data.matchAll(EP_PATTERN)]
-    const infoBanner = [...res.data.matchAll(INFO_BANNER_PATTERN)]
-    const typeMatch = [...res.data.matchAll(INFO_TYPE_PATTERN)]
-    const descriptionMatch = [...res.data.matchAll(DESCRIPTION_PATTERN)]
-    const genreMatch = [...res.data.matchAll(INFO_GENRE_PATTERN)]
-    const releaseMatch = [...res.data.matchAll(INFO_RELEASED_PATTERN)]
-    const statusMatch = [...res.data.matchAll(INFO_STATUS_PATTERN)]
-    const othernameMatch = [...res.data.matchAll(INFO_OTHERNAME_PATTERN)]
+
+    const infoBanner = [...infoMatches.matchAll(INFO_BANNER_PATTERN)]
+    const typeMatch = [...infoMatches.matchAll(INFO_TYPE_PATTERN)]
+    const descriptionMatch = [...infoMatches.matchAll(DESCRIPTION_PATTERN)]
+    const genreMatch = [...infoMatches.matchAll(INFO_GENRE_PATTERN)]
+    const releaseMatch = [...infoMatches.matchAll(INFO_RELEASED_PATTERN)]
+    const statusMatch = [...infoMatches.matchAll(INFO_STATUS_PATTERN)]
+    const othernameMatch = [...infoMatches.matchAll(INFO_OTHERNAME_PATTERN)]
     anime = {
         'animeBanner': infoBanner.at(-1)[1] ? infoBanner.at(-1)[1] : 'null',
         'maxEpisodes': episodeMatches.at(-1)[1] ? episodeMatches.at(-1)[1] : 'null',
