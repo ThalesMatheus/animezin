@@ -1,0 +1,97 @@
+body {
+  background: black;
+}
+
+.most-trend {
+  background-image: url("../../IMG/wallpaper.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 0;
+  position: relative;
+  padding-top: 56.64%; /* (img-height / img-width * container-width) */
+  /* (853 / 1280 * 100) */
+}
+.most-trend::after, .most-trend::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  background: linear-gradient(to top, black, transparent, transparent);
+  width: 100%;
+  height: 50%;
+}
+.most-trend::before {
+  top: 0 !important;
+  background: linear-gradient(to bottom, black, transparent, transparent, transparent);
+}
+
+.card {
+  height: 100%;
+  opacity: 1;
+  width: 100%;
+  top: 0;
+  position: absolute;
+  background: rgba(0, 0, 0, 0);
+  -webkit-backdrop-filter: blur(0);
+          backdrop-filter: blur(0);
+  transition: 0.5s;
+  display: flex;
+  align-items: center;
+}
+
+p {
+  opacity: 0;
+}
+
+.most-trend:hover .card {
+  opacity: 1;
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
+  background: rgba(0, 0, 0, 0.5);
+}
+.most-trend:hover .card p {
+  color: white;
+  font-size: 30px;
+  opacity: 1;
+  width: 100%; /* You Can Use 28ch */
+  margin: 30px auto;
+  border-right: 2px solid white;
+  overflow: hidden;
+  white-space: nowrap;
+  -webkit-animation: control-width 1s steps(8) 2s both, blink 0.5s infinite;
+          animation: control-width 1s steps(8) 2s both, blink 0.5s infinite;
+}
+
+@-webkit-keyframes control-width {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100px;
+  }
+}
+
+@keyframes control-width {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100px;
+  }
+}
+@-webkit-keyframes blink {
+  from {
+    border-right-color: white;
+  }
+  to {
+    border-right-color: transparent;
+  }
+}
+@keyframes blink {
+  from {
+    border-right-color: white;
+  }
+  to {
+    border-right-color: transparent;
+  }
+}/*# sourceMappingURL=trending.css.map */
